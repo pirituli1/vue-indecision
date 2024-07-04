@@ -33,8 +33,25 @@ console.log(
 // }
 //? Solución;
 // Si se llaman de la misma manera es opcional usar el value
-const getUser = (id:string) => ({
+const getUser = (id: string) => ({
   id,
   username: "Fernando",
 });
 console.log(getUser);
+
+const heroes = [
+  {
+    id: 1,
+    name: "Batman",
+  },
+  {
+    id: 2,
+    name: "SuperMan",
+    power: "Super Fuerza",
+  },
+];
+
+const hero= heroes.find( (h) => h.id===2);
+
+// En esta parte está creando una protección para que el programa no se detenga con el ? ya que el id podría llegar a ser nulo.
+console.log(hero?.power?.toUpperCase());
