@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="myApp">
+        <h1> Batman quotes {{ totalQuotes }}</h1>
+        <!-- Aquí ocupamos un modificador en el que al leer el evento de v-on:keypress.enter="" se lanza una función solamente al presionar el enter. -->
+        <input 
+            type="text" 
+            placeholder="addQuote"
+            @keypress.enter="addQuote"
+            v-model="newMessage"
+            >  
+        <br>
+        <br>
+        <button @click="toggleAutor"> Toggle Autor</button>
+        <hr>
+        <!-- La forma corta de v-on:click="" es: -->
+        <!-- <button @click="addQuote"> Add quote</button> -->
+
+        <ul>
+            <!-- Se puede desestructurar con el v-for el cuál está basado en en un "for of", eso ayuda a no acceder por ejemplo en este caso quote.quote -->
+             <!-- Si se usa v-show se le aplica "display:none" a todo el bloque, en cambio con un v-if, desaparece. Depende del objetivo, es más conveniente uno u otro -->
+            <li v-for="({ quote, author }, index) in quotes">
+                <span> {{ index +1 }} - {{ quote }}</span>
+                <blockquote v-if="showAuthor"> {{ author }}</blockquote>
+            </li>
+        </ul>
+
+
+    </div>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
