@@ -7,7 +7,9 @@
      <!-- Chat messages -->
       <chatMessage :messages="messages"/>
 
-      <messageBox/>
+      <!--Aquí se manda el evento a la función pero como el send-message ya está emitiendo un mensaje, se puede acortar y solo llamar la función -->
+      <!-- <messageBox @send-message="onMessage($event)"/> -->
+      <messageBox @send-message="onMessage"/>
       
       
     </div>
@@ -16,29 +18,9 @@
 <script setup lang="ts">
   import chatMessage from '@/components/chat/chatMessage.vue';
   import messageBox from '@/components/chat/messageBox.vue';
-import type{ ChatMessage } from '@/interfaces/chat-message.interface';
-  import { ref } from 'vue';
-
-  const messages = ref<ChatMessage[]>([
-    {
-    id: new Date().getTime(),
-    message: "Quieres ir a tomar café?",
-    itsMine: true
-    },
-    {
-    id: new Date().getTime()+1,
-    message: "Yes",
-    itsMine: false,
-    image: "https://yesno.wtf/assets/yes/9-6403270cf95723ae4664274db51f1fd4.gif",
-    },
-    {
-    id: new Date().getTime()+1,
-    message: "Que bueno, yo también quiero",
-    itsMine: true,
-    image: "https://yesno.wtf/assets/yes/9-6403270cf95723ae4664274db51f1fd4.gif",
-    },
-]);
+import { useChat } from '@/composables/useChat';
 
 
+  const {messages, onMessage} = useChat();
 
 </script>

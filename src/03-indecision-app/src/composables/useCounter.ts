@@ -2,11 +2,13 @@
 
 export const useCounter = (initialValue: number = 5) => {
 
-    const counter = ref(10);
+    const counter = ref(initialValue);
 
 
     return  {
         counter,
+
+        // readOnly
         squareCounter: computed(()=> counter.value * counter.value)
 
     }
