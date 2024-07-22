@@ -43,9 +43,6 @@ const emits = defineEmits<{
 }>();
 
 
-
-
-
 const message = ref('')
 
 const sendMessage = () => {
