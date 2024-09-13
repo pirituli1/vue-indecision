@@ -6,6 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/Slots-DaisyUI/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
